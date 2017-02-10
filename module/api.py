@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 .. module:: bitalino
    :synopsis: BITalino API
@@ -26,7 +26,7 @@ def find():
     if platform.system() == 'Windows' or platform.system() == 'Linux':
         try:
             import bluetooth
-        except Exception, e:
+        except Exception as e:
             raise Exception(ExceptionCode.IMPORT_FAILED + str(e))
         nearby_devices = bluetooth.discover_devices(lookup_names=True)
         return nearby_devices
@@ -81,7 +81,7 @@ class BITalino(object):
             if platform.system() == 'Windows' or platform.system() == 'Linux':
                 try:
                     import bluetooth
-                except Exception, e:
+                except Exception as e:
                     raise Exception(ExceptionCode.IMPORT_FAILED + str(e))
                 self.socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
                 self.socket.connect((macAddress, 1))
